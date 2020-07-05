@@ -19,10 +19,10 @@ class LocationController extends Controller
         //return the view, and pass in the group of records to loop through
         //$loc = Location::all();  //retrieve all records
 
-        $loc = Location::paginate(3); 
+        //$loc = Location::paginate(3); this is the default pagination, order in ascending order
 
-        //Order by will display the latest questions first
-        //$loc = Location::orderBy('id', 'location')->paginate(3);  //retrieve records in paginations format, 3 per page.
+        //Order by will display the latest location entries first, in desc order
+        $loc = Location::orderBy('id', 'desc')->paginate(3);  //retrieve records in paginations format, 3 per page.
 
         //return view('locations.index')->with('locations', $loc);
         return view('locations.index')->with('locations', $loc);
