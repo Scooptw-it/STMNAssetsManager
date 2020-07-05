@@ -17,5 +17,6 @@
                     <hr />
                 @endforeach
 
+                {!! $locations->links() !!}  {{-- this is for adding pagination function --}}
             </div>
 @endsection
