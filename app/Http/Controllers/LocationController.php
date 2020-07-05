@@ -14,7 +14,17 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //
+        //go to the model and get a group of records
+
+        //return the view, and pass in the group of records to loop through
+        //$questions = Question::all();  //retrieve all records
+        $loc = Location::all();  //retrieve all records
+
+        //Order by will display the latest questions first
+        //$loc = Location::orderBy('id', 'location')->paginate(3);  //retrieve records in paginations format, 3 per page.
+
+        //return view('locations.index')->with('locations', $loc);
+        return view('locations.index')->with('locations', $loc);
     }
 
     /**

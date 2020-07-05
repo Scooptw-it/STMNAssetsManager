@@ -12,4 +12,5 @@ class Location extends Model
     //by default it will also look for timestamp fields - created_at and updated_at
 
     //protected $table = 'user_questions'; in case you want to specify a different table name here
+    
 }
