@@ -93,7 +93,9 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $location = Location::find($id); //In case the id is not found
+        return view('locations.edit', compact('location')); 
     }
 
     /**
@@ -106,6 +108,11 @@ class LocationController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $loc = Location::findOrFail($id); //In case the id is not found
+        $this->validate($request, ['location'=>'required|max:255']);
+
+        return view('locations.show')->with('location', $loc); 
+
     }
 
     /**
