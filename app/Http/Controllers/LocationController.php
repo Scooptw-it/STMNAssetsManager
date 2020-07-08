@@ -94,7 +94,7 @@ class LocationController extends Controller
     public function edit($id)
     {
         
-        $location = Location::find($id); //In case the id is not found
+        $location = Location::findOrFail($id); //In case the id is not found
         return view('locations.edit', compact('location')); 
     }
 
@@ -111,7 +111,12 @@ class LocationController extends Controller
         $loc = Location::findOrFail($id); //In case the id is not found
         $this->validate($request, ['location'=>'required|max:255']);
 
-        return view('locations.show')->with('location', $loc); 
+        $loc->location = $request->get('location');
+        $loc->note = $request->get('note'); 
+        $loc->save();
+
+        return redirect()->route('locations.index')->with('message', 'Location Updated.');
+        //return view('locations.show')->with('location', $loc); 
 
     }
 

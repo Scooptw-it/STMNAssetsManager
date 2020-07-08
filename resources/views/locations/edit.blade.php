@@ -13,8 +13,13 @@
         <div class="container">
             <h1>Update an existing location:</h1>
             <hr />
+            @if(Session::has('message'))
+                <div class="alert alert-success">
+                    {{ Session::get('message') }}
+                </div>
+            @endif
             <form action="{{ route('locations.update', $location->id) }}" method="POST"> 
-
+                {{ method_field('PUT') }}
                 <!-- csrf will prevent cross-browser submission
                 csrf_field() will create hidden field with token values in the form
                 so the form can be submitted successfully to the database

@@ -2,6 +2,11 @@
 @extends('template')
 
 @section('content')
+            @if(Session::has('message'))
+                <div class="alert alert-success">
+                    {{ Session::get('message') }}
+                </div>
+            @endif
             <div class="container">         
                 <h1>All Locations:</h1>
                 <hr />
