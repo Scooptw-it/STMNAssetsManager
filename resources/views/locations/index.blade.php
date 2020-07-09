@@ -25,7 +25,7 @@
                         <td>Delete</td>
                     </tr>
 
-                @foreach ($locations as $location)
+                    @foreach ($locations as $location)
                     <tr>
                         <td>{{ $location->id }}</td>
                         <td>{{ $location->location }}</td>
@@ -43,33 +43,30 @@
                             <div class="modal fade" id="exampleModalCenter{{ $location->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                    
-                                    <form action="{{ route('locations.destroy', $location->id) }}" method="POST">
-                                    
+                                    <form action="{{ route('locations.destroy', $location->id) }}" method="POST">                               
                                         @method('DELETE')
                                         @csrf
-
                                         <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                            </button>
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Delete Selected Location:</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                            </div>
                                         </div>
-                                        <div class="modal-body">
-                                            Are you sure?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-outline-danger">Delete</button>
-                                        </div>
-                                        </div>
-
                                     </form>
                                 </div>
                             </div>
                         </td>
                    </tr>
-                @endforeach
+                    @endforeach
                 </table>
                 {!! $locations->links() !!}  {{-- this is for adding pagination function --}}
             </div>
