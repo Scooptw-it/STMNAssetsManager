@@ -34,13 +34,39 @@
                         <td><a href="{{ route('locations.show', $location->id) }}" class="btn btn-primary m-2">View Details</a></td>
                         <td><a href="{{ route('locations.edit', $location->id) }}" class="btn btn-primary m-2">Edit</a></td>
                         <td>
-                            <a href="">
-                                <form action="{{ route('locations.destroy', $location->id) }}" method="POST">
-                                    <button class="btn btn-primary m-2">Delete</button>
-                                    @method('DELETE')
-                                    @csrf
-                                </form>
-                            </a>      
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter{{ $location->id }}">
+                            Delete
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter{{ $location->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                   
+                                    <form action="{{ route('locations.destroy', $location->id) }}" method="POST">
+                                    
+                                        @method('DELETE')
+                                        @csrf
+
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                        </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
                         </td>
                    </tr>
                 @endforeach
