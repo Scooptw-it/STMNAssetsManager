@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -13,7 +14,12 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+
+        //Order by will display the latest location entries first, in desc order
+        $brand = Brand::all();  //retrieve all records
+
+        //return view('locations.index')->with('locations', $loc);
+        return view('brands.index')->with('brands', $brand);   
     }
 
     /**
@@ -36,7 +42,21 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate the form date, and make this field required and set up max length to 255 varchar
+        $this->validate($request, ['brand'=>'required|max:255']);
+
+        //$user = auth()->user();
+        $brand = new Brand();
+        $brand->brand = $request->brand;
+        $brand->note = $request->note;
+
+        //if insert is successful then we want to redirect to view to show to the user
+        if ($brand->save()){
+            return redirect()->route('brands.show', $brand->id);
+        }
+        else {
+            return redirect()->route('brands.create');
+        }
     }
 
     /**
@@ -47,7 +67,15 @@ class BrandController extends Controller
      */
     public function show($id)
     {
-        //
+        //use the model to get 1 record from the database
+
+        //show the view and pass the record to the view
+        $brand = Brand::findOrFail($id); //In case the id is not found
+
+        //return the view with some info, first parameter is the name of the data
+        //we want to refer to. Second parameter is the actual data we want to pass into
+        return view('brands.show')->with('brand', $brand); 
+
     }
 
     /**
