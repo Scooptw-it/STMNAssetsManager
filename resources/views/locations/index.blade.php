@@ -30,7 +30,15 @@
                         <td>{{ $location->created_at}}</td>
                         <td><a href="{{ route('locations.show', $location->id) }}" class="btn btn-primary m-1">View Details</a></td>
                         <td><a href="{{ route('locations.edit', $location->id) }}" class="btn btn-primary m-1">Edit</a></td>
-                        <td><a href="{{ route('locations.destroy', $location->id) }}" class="btn btn-primary m-1">Delete</a></td>
+                        <td>
+                            <a href="">
+                                <form action="{{ route('locations.destroy', $location->id) }}" method="POST">
+                                    <button class="btn btn-primary m-1">Delete</button>
+                                    @method('DELETE')
+                                    @csrf
+                                </form>
+                            </a>      
+                        </td>
                    </tr>
                 @endforeach
 

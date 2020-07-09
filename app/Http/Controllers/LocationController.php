@@ -128,6 +128,9 @@ class LocationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $loc = Location::findOrFail($id); //In case the id is not found
+        $loc->delete();
+
+        return redirect()->route('locations.index')->with('message', 'Location Deleted.');
     }
 }

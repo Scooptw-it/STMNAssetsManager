@@ -15,11 +15,11 @@
                 <div class="nav navbar-nav" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="#"><a href="{{ route('locations.index') }}">Recent</a></a></li>
+                        <li><a href="#"><a href="{{ route('locations.index') }}">Locations</a></a></li>
                         <li><a href="#">Popular</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <a href="#" class="btn btn-primary" style="margin-top: 5px;">Add A New Location</a>
+                        <a href="/locations/create" class="btn btn-primary" style="margin-top: 5px;">Add A New Location</a>
                     </ul>
                 </div>
             </div>
