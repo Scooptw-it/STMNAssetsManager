@@ -21,8 +21,13 @@
                 {{ csrf_field() }} 
 
                 <label for="location">Location: </label>
-                <input type="text" name="location" id="location" class="form-control" />
-                <br />
+                <input type="text" name="location" id="location" class="form-control @error('location') is-invalid @enderror" />    
+                @error('location')
+                    <span class="invalid-feedback font-weight-bold text-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                <br /><br />
                 <label for="note">More Information (Note): </label>
                 <textarea class="form-control" name="note" id="note" rows="4"></textarea>
                 <br />
