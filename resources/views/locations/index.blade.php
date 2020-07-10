@@ -13,61 +13,64 @@
                         <a href="/locations/create" class="btn btn-primary" style="margin-top: 5px;">Add A New Location</a>
                 </div>
                 <hr />
-                
-                <table border = "1">
-                    <tr>
-                        <td>Id</td>
-                        <td>Location</td>
-                        <td>Note</td>
-                        <td>CreateDate</td>
-                        <td>View Details</td>
-                        <td>Edit</td>
-                        <td>Delete</td>
-                    </tr>
+                <table class="table table-striped table-bordered text-center table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" class="text-center">Id</td>
+                            <th scope="col" class="text-center">Location</td>
+                            <th scope="col" class="text-center">Note</td>
+                            <th scope="col" class="text-center">CreateDate</td>
+                            <th scope="col" class="text-center">View Details</td>
+                            <th scope="col" class="text-center">Edit</td>
+                            <th scope="col" class="text-center">Delete</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($locations as $location)
+                        <tr>
+                            <td>{{ $location->id }}</td>
+                            <td>{{ $location->location }}</td>
+                            <td>{{ $location->note }}</td>
+                            <td>{{ $location->created_at}}</td>
+                            <td><a href="{{ route('locations.show', $location->id) }}" class="btn btn-primary m-2">View Details</a></td>
+                            <td><a href="{{ route('locations.edit', $location->id) }}" class="btn btn-primary m-2">Edit</a></td>
+                            <td>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter{{ $location->id }}">
+                                Delete
+                                </button>
 
-                    @foreach ($locations as $location)
-                    <tr>
-                        <td>{{ $location->id }}</td>
-                        <td>{{ $location->location }}</td>
-                        <td>{{ $location->note }}</td>
-                        <td>{{ $location->created_at}}</td>
-                        <td><a href="{{ route('locations.show', $location->id) }}" class="btn btn-primary m-2">View Details</a></td>
-                        <td><a href="{{ route('locations.edit', $location->id) }}" class="btn btn-primary m-2">Edit</a></td>
-                        <td>
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter{{ $location->id }}">
-                            Delete
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModalCenter{{ $location->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                   
-                                    <form action="{{ route('locations.destroy', $location->id) }}" method="POST">                               
-                                        @method('DELETE')
-                                        @csrf
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Delete Selected Location:</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter{{ $location->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                    
+                                        <form action="{{ route('locations.destroy', $location->id) }}" method="POST">                               
+                                            @method('DELETE')
+                                            @csrf
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Delete Selected Location:</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                                </div>
                                             </div>
-                                            <div class="modal-body">
-                                                Are you sure?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-outline-danger">Delete</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                   </tr>
-                    @endforeach
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
                 </table>
+              
                 {!! $locations->links() !!}  {{-- this is for adding pagination function --}}
             </div>
 @endsection

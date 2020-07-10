@@ -14,16 +14,16 @@
                 </div>
                 <hr />
                 
-                <table  class="table table-striped table-bordered text-center">
-                    <thead>
-                        <tr class="">
-                            <th scope="col">Id</td>
-                            <th scope="col">Brand</td>
-                            <th scope="col">Note</td>
-                            <th scope="col">CreateDate</td>
-                            <th scope="col">View Details</td>
-                            <th scope="col">Edit</td>
-                            <th scope="col">Delete</td>
+                <table class="table table-striped table-bordered text-center table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" class="text-center">Id</td>
+                            <th scope="col" class="text-center">Brand</td>
+                            <th scope="col" class="text-center">Note</td>
+                            <th scope="col" class="text-center">CreateDate</td>
+                            <th scope="col" class="text-center">View Details</td>
+                            <th scope="col" class="text-center">Edit</td>
+                            <th scope="col" class="text-center">Delete</td>
                         </tr>
                     </thead>
                     <tbody>
