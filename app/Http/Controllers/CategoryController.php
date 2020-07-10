@@ -17,9 +17,8 @@ class CategoryController extends Controller
         //Order by will display the latest location entries first, in desc order
         //$brand = Brand::all();  //retrieve all records
 
-         //Order by will display the latest location entries first, in desc order
-         $category = Category::orderBy('id', 'desc')->paginate(5);  //retrieve records in paginations format, 3 per page.
-
+        //Order by will display the latest location entries first, in desc order
+        $category = Category::orderBy('id', 'desc')->paginate(5);  //retrieve records in paginations format, 3 per page.
 
         //return view('locations.index')->with('locations', $loc);
         return view('categories.index')->with('categories', $category);   
@@ -89,7 +88,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id); //In case the id is not found
+        return view('categories.edit', compact('category')); 
     }
 
     /**
@@ -101,7 +101,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $category = Category::findOrFail($id); //In case the id is not found
+        $this->validate($request, ['category'=>'required|max:255']);
+
+        $category->category = $request->get('category');
+        $category->note = $request->get('note'); 
+        $category->save();
+
+        return redirect()->route('categories.index')->with('message', 'Category Updated.'); 
     }
 
     /**
