@@ -10,10 +10,9 @@
             <div class="container">         
                 <h1>All Brands:</h1>
                 <div class="">
-                        <a href="/brands/create" class="btn btn-primary" style="margin-top: 5px;">Add A New Brand</a>
+                    <a href="/brands/create" class="btn btn-primary" style="margin-top: 5px;">Add A New Brand</a>
                 </div>
                 <hr />
-                
                 <table class="table table-striped table-bordered text-center table-hover">
                     <thead class="thead-dark">
                         <tr>
