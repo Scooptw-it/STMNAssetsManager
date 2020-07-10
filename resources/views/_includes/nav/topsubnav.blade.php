@@ -12,7 +12,10 @@
         <a class="nav-link" href="/locations">Locations   </a>
       </li>
       <li class="nav-item mr-2">
-        <a class="nav-link" href="#">Brands   </a>
+        <a class="nav-link" href="/brands">Brands</a>
+      </li>
+      <li class="nav-item mr-2">
+        <a class="nav-link" href="/categories">Categories</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

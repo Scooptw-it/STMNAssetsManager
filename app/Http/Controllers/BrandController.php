@@ -86,7 +86,9 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+                
+        $brand = Brand::findOrFail($id); //In case the id is not found
+        return view('brands.edit', compact('brand')); 
     }
 
     /**
@@ -99,6 +101,14 @@ class BrandController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $brand = Brand::findOrFail($id); //In case the id is not found
+        $this->validate($request, ['brand'=>'required|max:255']);
+
+        $brand->brand = $request->get('brand');
+        $brand->note = $request->get('note'); 
+        $brand->save();
+
+        return redirect()->route('brands.index')->with('message', 'Brand Updated.');
     }
 
     /**
