@@ -22,8 +22,6 @@ class CreateSublocationsTable extends Migration
             $table->string('create_user')->nullable();
             $table->string('update_user')->nullable();
 
-            //$table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade')->onUpdate('cascade');
-            //$table->foreign('question_id')->references ('id')->on('questions')->onDelete('cascade');//on table
             $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade')->onUpdate('cascade');
         });
     }

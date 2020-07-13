@@ -25,7 +25,12 @@ class SublocationController extends Controller
      */
     public function create()
     {
-        //
+
+        $locations = Location::all();
+
+        //go to the view folder and look for locations folder and then
+        //a file named create.blade.php
+        return view('sublocations.create', compact('locations'));  
     }
 
     /**
