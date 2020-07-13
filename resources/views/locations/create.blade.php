@@ -13,7 +13,7 @@
         <div class="container">
             <h1>Add a new location:</h1>
             <hr />
-            <form action="{{ route('locations.store') }}" method="POST"> 
+            <form action="{{ route('sublocations.store') }}" method="POST"> 
                 <!-- csrf will prevent cross-browser submission
                 csrf_field() will create hidden field with token values in the form
                 so the form can be submitted successfully to the database

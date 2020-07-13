@@ -30,8 +30,8 @@
                     </select>
                 </div>
                 <label for="sublocation">Sublocation: </label>
-                <input type="text" name="sublocation" id="sublocation" class="form-control @error('location') is-invalid @enderror" />    
-                @error('location')
+                <input type="text" name="sublocation" id="sublocation" class="form-control @error('sublocation') is-invalid @enderror" />    
+                @error('sublocation')
                     <span class="invalid-feedback font-weight-bold text-danger" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
