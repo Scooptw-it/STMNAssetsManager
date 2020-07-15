@@ -130,6 +130,10 @@ class SublocationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //delete a sublocation
+        $sublocation = Sublocation::findOrFail($id); //In case the id is not found
+        $sublocation->delete();
+
+        return redirect()->route('sublocations.index')->with('message', 'Sublocation Deleted.');
     }
 }
