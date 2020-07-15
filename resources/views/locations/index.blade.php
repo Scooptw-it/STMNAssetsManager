@@ -9,9 +9,10 @@
             @endif
             <div class="container">         
                 <h1>All Locations:</h1>
-                <div class="">
-                        <a href="/locations/create" class="btn btn-primary" style="margin-top: 5px;">Add A New Location</a>
-                </div>
+                <ul class="nav nav-list">
+                    <li class="divider mr-lg-5"><a href="/locations/create" class="btn btn-primary" style="margin-top: 5px;">Add A New Location</a></li>
+                    <li class="divider ml-lg-2"><a href="/sublocations/" class="btn btn-primary" style="margin-top: 5px;">Sublocation Home</a></li>
+                </ul>
                 <hr />
                 <table class="table table-striped table-bordered text-center table-hover">
                     <thead class="thead-dark">
