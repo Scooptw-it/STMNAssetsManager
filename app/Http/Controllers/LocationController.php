@@ -133,4 +133,20 @@ class LocationController extends Controller
 
         return redirect()->route('locations.index')->with('message', 'Location Deleted.');
     }
+
+    public function sublocation()
+    {
+        //SELECT * FROM `addresses` WHERE user_id = ??
+        //id is the default PK, so the relation is automatically
+        //being figured out. Since this is User model, so FK, by
+        //default, should be user_id, if use a different name, then it
+        //won't work.
+        //return $this->hasOne('App\Location');
+        //return $this->hasOne(Location::class); //the two lines will do the same thing
+
+        return $this->hasOne(Location::class);
+    }
+
+
+
 }

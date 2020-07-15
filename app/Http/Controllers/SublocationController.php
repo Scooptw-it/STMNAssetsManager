@@ -15,7 +15,17 @@ class SublocationController extends Controller
      */
     public function index()
     {
-        //
+        //go to the model and get a group of records
+        //return the view, and pass in the group of records to loop through
+        $sublocation = Sublocation::all();  //retrieve all records
+
+        //$loc = Location::paginate(3); this is the default pagination, order in ascending order
+
+        //Order by will display the latest location entries first, in desc order
+        //$loc = Location::orderBy('id', 'desc')->paginate(3);  //retrieve records in paginations format, 3 per page.
+
+        //return view('locations.index')->with('locations', $loc);
+        return view('sublocations.index')->with('sublocations', $sublocation);
     }
 
     /**
@@ -70,12 +80,13 @@ class SublocationController extends Controller
         //use the model to get 1 record from the database
 
         //show the view and pass the record to the view
-        //$sublocation = Sublocation::findOrFail($id); //In case the id is not found
+        $sublocation = Sublocation::findOrFail($id); //In case the id is not found
+        $location = Sublocation::findOrFail($sublocation->location_id);
 
         //return the view with some info, first parameter is the name of the data
         //we want to refer to. Second parameter is the actual data we want to pass into
         //return view('sublocations.show')->with('sublocation', $sublocation); 
-
+        return view('sublocations.show', compact('sublocation'));
     }
 
     /**
