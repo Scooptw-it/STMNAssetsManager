@@ -97,7 +97,9 @@ class SublocationController extends Controller
      */
     public function edit($id)
     {
-        //
+        //edit sublocation
+        $sublocation = Sublocation::findOrFail($id); //In case the id is not found
+        return view('sublocations.edit', compact('sublocation')); 
     }
 
     /**
@@ -110,6 +112,14 @@ class SublocationController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $sublocation = Sublocation::findOrFail($id); //In case the id is not found
+        $this->validate($request, ['sublocation'=>'required|max:255']);
+
+        $sublocation->sublocation = $request->get('sublocation');
+        $sublocation->note = $request->get('note'); 
+        $sublocation->save();
+
+        return redirect()->route('sublocations.index')->with('message', 'Sublocation Updated.');
     }
 
     /**
